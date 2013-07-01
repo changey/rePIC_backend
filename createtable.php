@@ -61,50 +61,20 @@ $query = '
     ENGINE=MyISAM';
 mysql_query($query, $con) or die (mysql_error($con));
 
-/*$query = 'DROP TABLE IF EXISTS frequents';
+$query = 'DROP TABLE IF EXISTS friends';
 mysql_query($query, $con) or die (mysql_error($con));
 //create the table
 $query = '
-        CREATE TABLE frequents (
-        id            INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
-        item          VARCHAR(255)       NOT NULL,
-        promotion     VARCHAR(255)       NOT NULL,
-        merchant      INTEGER           NOT NULL,
-        frequency     INTEGER           NOT NULL,
-
-        PRIMARY KEY (id)
-    ) 
-    ENGINE=MyISAM';
-mysql_query($query, $con) or die (mysql_error($con));
-$query = 'DROP TABLE IF EXISTS menus';
-mysql_query($query, $con) or die (mysql_error($con));
-//create the table
-$query = '
-        CREATE TABLE menus (
-        id            INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
-        item          VARCHAR(255)       NOT NULL,
-        price         VARCHAR(255)       NOT NULL,
-        merchant      INTEGER           NOT NULL,
-        category     INTEGER           NOT NULL,
+        CREATE TABLE friends (
+        id           INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
+        user            VARCHAR(255)      NOT NULL,
+        friend          VARCHAR(255)      NOT NULL,
 
         PRIMARY KEY (id)
     ) 
     ENGINE=MyISAM';
 mysql_query($query, $con) or die (mysql_error($con));
 
-$query = 'DROP TABLE IF EXISTS menus_main';
-mysql_query($query, $con) or die (mysql_error($con));
-//create the table
-$query = '
-        CREATE TABLE menus_main (
-        id            INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
-        category      VARCHAR(255)       NOT NULL,
-        merchant      INTEGER           NOT NULL,
-
-        PRIMARY KEY (id)
-    ) 
-    ENGINE=MyISAM';
-mysql_query($query, $con) or die (mysql_error($con));*/
 
 echo 'Database successfully created!';
 ?>
