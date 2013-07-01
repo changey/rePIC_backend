@@ -23,7 +23,7 @@ curl_close($handle);
 
 $array = json_decode($data);
 
-$title =  $array->title;  
+//$title =  $array->title;  
 
 
 ?>
