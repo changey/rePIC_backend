@@ -7,7 +7,7 @@ $time =$_POST['time'];
 $url =$_POST['url'];
 
 //$message='trial';
-// connect to MySQL//  $db = mysql_connect('127.0.0.1', 'root2','root') or//      die ('Unable to connect. Check your connection parameters.');
+
 include_once 'config.php';
 
 $query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', 'heather', 'lala','baba','dada')";

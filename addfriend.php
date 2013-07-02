@@ -1,6 +1,5 @@
 <?php
 
-$message = $_POST['message'];
 $user =$_GET['user'];
 $friend=$_GET['friend'];
 
