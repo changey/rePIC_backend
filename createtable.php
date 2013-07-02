@@ -2,20 +2,20 @@
 //connect to MySQL
 include_once 'config.php';
 
-$query = 'DROP TABLE IF EXISTS rnmembers';
-mysql_query($query, $con) or die (mysql_error($con));
-//create the table
-$query = '
-        CREATE TABLE rnmembers (
-        id            INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
-        user          VARCHAR(16)       NOT NULL,
-        pass          VARCHAR(255)       NOT NULL,
-        name          VARCHAR(255)       NOT NULL,
-
-        PRIMARY KEY (id)
-    ) 
-    ENGINE=MyISAM';
-mysql_query($query, $con) or die (mysql_error($con));
+// $query = 'DROP TABLE IF EXISTS rnmembers';
+// mysql_query($query, $con) or die (mysql_error($con));
+// //create the table
+// $query = '
+        // CREATE TABLE rnmembers (
+        // id            INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
+        // user          VARCHAR(16)       NOT NULL,
+        // pass          VARCHAR(255)       NOT NULL,
+        // name          VARCHAR(255)       NOT NULL,
+// 
+        // PRIMARY KEY (id)
+    // ) 
+    // ENGINE=MyISAM';
+// mysql_query($query, $con) or die (mysql_error($con));
 
 $query = 'DROP TABLE IF EXISTS devices';
 mysql_query($query, $con) or die (mysql_error($con));
@@ -68,7 +68,7 @@ $query = '
         CREATE TABLE friends (
         id           INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
         user            VARCHAR(255)      NOT NULL,
-        friend          VARCHAR(255)      NOT NULL,
+        friend_id       VARCHAR(255)      NOT NULL,
 
         PRIMARY KEY (id)
     ) 
