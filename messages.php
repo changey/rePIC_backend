@@ -6,6 +6,12 @@ $receiver =$_GET['receiver'];
 $time =$_GET['time'];
 $url =$_GET['url'];
 
+// $message = $_POST['message'];
+// $sender =$_POST['sender'];
+// $receiver =$_POST['receiver'];
+// $time =$_POST['time'];
+// $url =$_POST['url'];
+
 
 //$message='trial';
 
