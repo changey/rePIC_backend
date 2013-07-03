@@ -16,7 +16,11 @@ $query = "SELECT * FROM rnmembers WHERE user='$friend'";
 	    	}
 	    	while ($row = mysql_fetch_row($result)) {
 			  // $row[3];
+<<<<<<< HEAD
 			    //$friend=$row[0];
+=======
+			 //   $friend_id=$row[0];
+>>>>>>> 355d2a8021b240524bc8340bbb04ca00cea2ea83
 			
 		    	$query = "INSERT INTO friends (user, friend) VALUES('$user', '$friend')";
 		    	mysql_query($query);
