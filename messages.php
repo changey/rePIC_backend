@@ -11,8 +11,8 @@ $url =$_GET['url'];
 
 include_once 'config.php';
 
-// $somearg = escapeshellarg('blah');
-// exec("php file2.php $somearg > /dev/null &");
+include('http://107.22.99.26/startup/schedule.php');
+
 
 $receiver_array="[\"jill\",\"jace\"]";
 $time="2013-07-03 22:48:29";
@@ -24,7 +24,7 @@ $length=count($receiver_decode);
 
 for($i=0;$i<$length;$i++){
 	echo $receiver_decode[$i];
-	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver_decode[$i]', 'lala','baba','dada')";
+	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver_decode[$i]', '$time','baba','dada')";
 			mysql_query($query);
 }
 

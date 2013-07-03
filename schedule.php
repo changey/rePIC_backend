@@ -1,6 +1,6 @@
 <?php
 
- $alias = $_GET['alias'];
+ //$alias = $_GET['alias'];
 
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
