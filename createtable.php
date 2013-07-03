@@ -68,7 +68,7 @@ $query = '
         CREATE TABLE friends (
         id           INTEGER UNSIGNED  NOT NULL AUTO_INCREMENT, 
         user            VARCHAR(255)      NOT NULL,
-        friend_id       VARCHAR(255)      NOT NULL,
+        friend          VARCHAR(255)      NOT NULL,
 
         PRIMARY KEY (id)
     ) 
