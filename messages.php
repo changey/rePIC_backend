@@ -11,7 +11,7 @@ $url =$_GET['url'];
 
 include_once 'config.php';
 
-include('http://107.22.99.26/startup/schedule.php');
+include('http://107.22.99.26/startup/schedule.php?alert=lala');
 
 
 $receiver_array="[\"jill\",\"jace\"]";

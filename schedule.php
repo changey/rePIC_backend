@@ -1,6 +1,7 @@
 <?php
 
  //$alias = $_GET['alias'];
+ $alert=$_GET['alert'];
 
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
@@ -8,7 +9,7 @@
 
  $contents = array(); 
  //$contents['badge'] = "+1"; 
- $contents['alert'] = "Take a look at these good looking judges:)"; 
+ $contents['alert'] = $alert; 
  $contents['sound'] = "cow"; 
  //$contents['alias'] = $alias;
  
