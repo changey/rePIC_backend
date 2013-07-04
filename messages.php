@@ -2,12 +2,16 @@
 
 $message = $_GET['message'];
 $sender =$_GET['sender'];
-$receivers =$_POST['receivers'];
+$aliases =$_POST['receivers'];
 $time =$_GET['time'];
 $url =$_GET['url'];
 
 $alert=$_POST['captions'];
 
+if (strcmp($alert, "Captions")==0){
+	$alert="";
+	echo 'dada';
+}
 // $message = $_POST['message'];
 // $sender =$_POST['sender'];
 // $receiver =$_POST['receiver'];
@@ -19,14 +23,20 @@ $alert=$_POST['captions'];
 
 include_once 'config.php';
 
-//shell_exec('http://107.22.99.26/startup/schedule.php?alert=lala');
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL, "http://172.17.164.70//startup/schedule.php?alert=$alert");
-// curl_setopt($ch, CURLOPT_HEADER, 0);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// 
-// $output = curl_exec($ch);
-// curl_close($ch);
+echo $aliases;
+ 
+$aliases_decode = json_decode($aliases);
+
+echo $aliases_decode;
+ 
+$length=count($aliases_decode);
+
+echo $length;
+
+for($i=0;$i<$length;$i++){
+	echo $aliases_decode[$i];
+
+}
 
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
@@ -47,7 +57,7 @@ include_once 'config.php';
  $sch_contents[0]["scheduled_time"]="2013-06-30 20:28:00";
  
  $ali_contents=array("changey", "jace");
- $push = array("aps" => $contents, "aliases" => $ali_contents, "schedule_for"=> "2013-06-30 22:31:00"); 
+ $push = array("aps" => $contents, "aliases" => $aliases_decode, "schedule_for"=> "2013-06-30 22:31:00"); 
  // $push = array("aps" => $contents, "aliases" => $ali_contents); 
 
  $json = json_encode($push); 
@@ -80,14 +90,14 @@ include_once 'config.php';
 $receiver_array="[\"jill\",\"jace\"]";
 $time="2013-07-03 22:48:29";
 
-$receiver_decode = json_decode($receiver_array);
+$receiver_decode = json_decode($aliases);
 
 echo count($receiver_decode);
 $length=count($receiver_decode);
 
 for($i=0;$i<$length;$i++){
 	echo $receiver_decode[$i];
-	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver_decode[$i]', '$time','baba','dada')";
+	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver_decode[$i]', '$time','baba','$alert')";
 			mysql_query($query);
 }
 

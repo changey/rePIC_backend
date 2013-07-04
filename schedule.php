@@ -19,6 +19,16 @@
 // 
 // }
 
+//shell_exec('http://107.22.99.26/startup/schedule.php?alert=lala');
+// $ch = curl_init();
+// curl_setopt($ch, CURLOPT_URL, "http://172.17.164.70//startup/schedule.php?alert=$alert");
+// curl_setopt($ch, CURLOPT_HEADER, 0);
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// 
+// $output = curl_exec($ch);
+// curl_close($ch);
+
+
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
  define('PUSHURL', 'https://go.urbanairship.com/api/push/'); 
