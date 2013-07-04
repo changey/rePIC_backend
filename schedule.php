@@ -2,10 +2,26 @@
 
  //$alias = $_GET['alias'];
  $alert=$_GET['alert'];
+ $aliases=$_POST['receivers'];
+ 
+ // echo $aliases;
+//  
+// $aliases_decode = json_decode($aliases);
+// 
+// echo $aliases_decode;
+//  
+// $length=count($aliases_decode);
+// 
+// echo $length;
+// 
+// for($i=0;$i<$length;$i++){
+	// echo $aliases_decode[$i];
+// 
+// }
 
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
- define('PUSHURL', 'https://go.urbanairship.com/api/push/broadcast/'); 
+ define('PUSHURL', 'https://go.urbanairship.com/api/push/'); 
 
  $contents = array(); 
  //$contents['badge'] = "+1"; 
@@ -19,12 +35,12 @@
  $sch_contents[0]["alias"]="changey3";
  $sch_contents[0]["scheduled_time"]="2013-06-30 20:28:00";
  
- $ali_contents=array("changey");
+ $ali_contents=array("changey", "jace");
  $push = array("aps" => $contents, "aliases" => $ali_contents, "schedule_for"=> "2013-06-30 22:31:00"); 
  // $push = array("aps" => $contents, "aliases" => $ali_contents); 
 
  $json = json_encode($push); 
- echo $json;
+ //echo $json;
 
  $session = curl_init(PUSHURL); 
  curl_setopt($session, CURLOPT_USERPWD, APPKEY . ':' . PUSHSECRET); 
