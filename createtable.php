@@ -55,6 +55,8 @@ $query = '
         url             VARCHAR(255)      NOT NULL,
         time            VARCHAR(255)      NOT NULL,
         captions        VARCHAR(255)      NOT NULL,
+        number          VARCHAR(255)      NOT NULL,
+        due             VARCHAR(255)      NOT NULL,
 
         PRIMARY KEY (id)
     ) 

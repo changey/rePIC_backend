@@ -1,16 +1,16 @@
 <?php
 
 $message = $_GET['message'];
-$sender =$_GET['sender'];
+$sender =$_POST['sender'];
 $aliases =$_POST['receivers'];
-$time =$_GET['time'];
+$time =$_POST['time'];
 $url =$_GET['url'];
 
 $alert=$_POST['captions'];
 
 if (strcmp($alert, "Captions")==0){
 	$alert="";
-	echo 'dada';
+	//echo 'dada';
 }
 // $message = $_POST['message'];
 // $sender =$_POST['sender'];
@@ -21,22 +21,22 @@ if (strcmp($alert, "Captions")==0){
 
 //$message='trial';
 
-include_once 'config.php';
-
-echo $aliases;
+// echo $aliases;
  
 $aliases_decode = json_decode($aliases);
 
-echo $aliases_decode;
+//echo $aliases_decode;
  
 $length=count($aliases_decode);
 
-echo $length;
+//echo $length;
 
 for($i=0;$i<$length;$i++){
 	echo $aliases_decode[$i];
 
 }
+
+include_once 'config.php';
 
  define('APPKEY','KGEg7t5YQyitKZhJuM-jSg'); 
  define('PUSHSECRET', 'lNY11NaZSTaF_YTpU0Ajaw'); // Master Secret
@@ -46,9 +46,10 @@ for($i=0;$i<$length;$i++){
  //$contents['badge'] = "+1"; 
  $contents['alert'] = $alert; 
  
- echo $alert;
+ //echo $aliases;
  $contents['sound'] = "cow"; 
- //$contents['alias'] = $alias;
+ $aliases_clean = str_replace("\\", "", $aliases);
+ //echo $aliases_clean;
  
 // $push = array("aps" => $contents,
  //               "schedule_for"=>"2013-06-30 00:08:00"); 
@@ -57,11 +58,11 @@ for($i=0;$i<$length;$i++){
  $sch_contents[0]["scheduled_time"]="2013-06-30 20:28:00";
  
  $ali_contents=array("changey", "jace");
- $push = array("aps" => $contents, "aliases" => $aliases_decode, "schedule_for"=> "2013-06-30 22:31:00"); 
+ $push = array("aps" => $contents, "aliases" => $aliases_decode, "schedule_for"=> $time); 
  // $push = array("aps" => $contents, "aliases" => $ali_contents); 
 
  $json = json_encode($push); 
- //echo $json;
+ echo $json;
 
  $session = curl_init(PUSHURL); 
  curl_setopt($session, CURLOPT_USERPWD, APPKEY . ':' . PUSHSECRET); 
@@ -86,23 +87,24 @@ for($i=0;$i<$length;$i++){
  curl_close($session);
  
 
-
-$receiver_array="[\"jill\",\"jace\"]";
-$time="2013-07-03 22:48:29";
+$query = "SELECT * FROM messages";
+$messages_number=mysql_num_rows(mysql_query($query));
 
 $receiver_decode = json_decode($aliases);
+$receiver_number=count($receiver_decode);
 
-echo count($receiver_decode);
+echo ",$messages_number,$receiver_number";
 $length=count($receiver_decode);
 
+
 for($i=0;$i<$length;$i++){
-	echo $receiver_decode[$i];
-	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver_decode[$i]', '$time','baba','$alert')";
+	//echo $receiver_decode[$i];
+	$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('$sender', '$receiver_decode[$i]', '$time','baba','$alert')";
 			mysql_query($query);
 }
 
 //$query = "INSERT INTO messages (sender, receiver, time, url, captions) VALUES('changey', '$receiver', 'lala','baba','dada')";
 //			mysql_query($query);//make sure you're using the correct database//mysql_select_db('devices', $db) or die(mysql_error($db));
 
-echo 'Data inserted successfully!';
+//echo 'Data inserted successfully!';
 ?>

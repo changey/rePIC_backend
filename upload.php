@@ -58,6 +58,8 @@ if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
 
 	if (move_uploaded_file($_FILES['image']['tmp_name'], $target_path)) {
 		echo "The file " . basename($_FILES['image']['name']) . " has been uploaded";
+		//echo "http://107.22.99.26/startup/uploads/$file_number.jpg";
+		
 	} else {
 		echo "There was an error uploading the file, please try again!";
 	}
