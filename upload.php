@@ -5,6 +5,9 @@ $sender =$_POST['sender'];
 $receiver =$_POST['receiver'];
 $time =$_POST['time'];
 $url =$_POST['url'];
+$messages_number=$_POST['messages_number'];
+$receiver_number=$_POST['receiver_number'];
+echo $messages_number;
 
 //$message='trial';
 // connect to MySQL//  $db = mysql_connect('127.0.0.1', 'root2','root') or//      die ('Unable to connect. Check your connection parameters.');
@@ -65,6 +68,39 @@ if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
 	}
 
 }
+  $receiver_number_i=intval($receiver_number);
+
+  $messages_number_i=intval($messages_number);
+  echo $messages_number_i;
+  echo $receiver_number_i;
+  
+  for($i=0;$i<$receiver_number_i;$i++){
+  	$messages_number_i=$messages_number_i+1;
+
+  $query = "UPDATE messages SET url='http://107.22.99.26/startup/uploads/$file_number.jpg' WHERE id=$messages_number_i";
+// if (mysql_num_rows(mysql_query($query)) == 0) {
+	// //$error = "That username already exists<br /><br />";
+	// echo 0;
+// } else {
+	$result = mysql_query($query) or die(mysql_error($con));
+  }
+	//echo $result;
+	// if (!$result) {
+		// die("Query to show fields from table failed");
+	// }
+	// $stack = array();
+// 
+// 
+	// while ($row = mysql_fetch_row($result)) {
+		// // $row[3];
+		// //$user_id = $row[2];
+		// $data = array("id" => $row[0], "sender" => $row[1], "receiver" => $row[2], "url" => $row[3], "time" => $row[4], "captions" => $row[5]);
+// 		
+		// array_push($stack, $data);
+// 		 
+		// //$query = "INSERT INTO friends (user, friend_id) VALUES('$user', $friend_id)";
+		// mysql_query($query);
+	// }
 
 echo 'Data inserted successfully!';
 ?>

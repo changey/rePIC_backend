@@ -19,7 +19,7 @@ $query = "SELECT * FROM rnmembers WHERE user='$user'";
 			//$error = "That username already exists<br /><br />";
 			echo 0;
 		} else {
-			$query = "INSERT INTO rnmembers (user, pass, role) VALUES('$user', '$pass', 0)";
+			$query = "INSERT INTO rnmembers (user, pass) VALUES('$user', '$pass')";
 			mysql_query($query);
 			echo 1;
 			//header("Location: index2.php");

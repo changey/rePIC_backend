@@ -5,7 +5,7 @@ $friend = $_GET['friend'];
 
 include_once 'config.php';
 
-$query = "SELECT * FROM messages WHERE receiver='jill' ORDER BY id DESC";
+$query = "SELECT * FROM messages WHERE receiver='$user' ORDER BY id DESC";
 // if (mysql_num_rows(mysql_query($query)) == 0) {
 	// //$error = "That username already exists<br /><br />";
 	// echo 0;

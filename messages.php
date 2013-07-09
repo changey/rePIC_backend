@@ -32,7 +32,7 @@ $length=count($aliases_decode);
 //echo $length;
 
 for($i=0;$i<$length;$i++){
-	echo $aliases_decode[$i];
+	//echo $aliases_decode[$i];
 
 }
 
@@ -53,16 +53,13 @@ include_once 'config.php';
  
 // $push = array("aps" => $contents,
  //               "schedule_for"=>"2013-06-30 00:08:00"); 
- $sch_contents=array();
- $sch_contents[0]["alias"]="changey3";
- $sch_contents[0]["scheduled_time"]="2013-06-30 20:28:00";
  
  $ali_contents=array("changey", "jace");
  $push = array("aps" => $contents, "aliases" => $aliases_decode, "schedule_for"=> $time); 
  // $push = array("aps" => $contents, "aliases" => $ali_contents); 
 
  $json = json_encode($push); 
- echo $json;
+ //echo $json;
 
  $session = curl_init(PUSHURL); 
  curl_setopt($session, CURLOPT_USERPWD, APPKEY . ':' . PUSHSECRET); 
@@ -72,16 +69,20 @@ include_once 'config.php';
  curl_setopt($session, CURLOPT_RETURNTRANSFER, True); 
  curl_setopt($session, CURLOPT_HTTPHEADER, array('Content-Type:application/json')); 
  $content = curl_exec($session); 
- echo $content; // just for testing what was sent
+ //echo $content; // just for testing what was sent
 
  // Check if any error occured 
  $response = curl_getinfo($session); 
- if($response['http_code'] != 200) { 
-     echo "Got negative response from server, http code: ". 
-     $response['http_code'] . "\n"; 
+ 
+ $return = array(); 
+ 
+ if($response['http_code'] != 200) {
+ 	 $return['response'] = "Got negative response from server, http code: " . $response['http_code'] . "";  
+  //   echo "Got negative response from server, http code: ". 
+  //   $response['http_code'] . ""; 
  } else { 
-
-     echo "Wow, it worked!\n"; 
+     $return['response'] = "Wow, it worked!";
+    // echo "Wow, it worked!"; 
  } 
 
  curl_close($session);
@@ -93,7 +94,12 @@ $messages_number=mysql_num_rows(mysql_query($query));
 $receiver_decode = json_decode($aliases);
 $receiver_number=count($receiver_decode);
 
-echo ",$messages_number,$receiver_number";
+$return['messages_number']=$messages_number;
+$return['receiver_number']=$receiver_number;
+$json = json_encode($return);
+echo $json; 
+
+//echo ",$messages_number,$receiver_number";
 $length=count($receiver_decode);
 
 
